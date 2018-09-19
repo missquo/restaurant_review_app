@@ -283,6 +283,15 @@ nav h1 a {
 #restaurant-hours td {
   color: #666; }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  background: black;
+  color: white;
+  padding: 8px;
+  z-index: 100; }
+
 @media screen and (max-width: 400px) {
   .inside #map-container {
     height: 30%;

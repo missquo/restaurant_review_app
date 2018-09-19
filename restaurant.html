@@ -18,11 +18,12 @@
   <header>
     <!-- Beginning nav -->
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1><a aria-label="home" href="/">Restaurant Reviews</a></h1>
+	  <a href=#restaurant-container class=skip-link>Skip to main content - Review</a>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a tabindex="1" aria-label="Home" aria-role="link" href="/">Home</a></li>
+    <ul id="breadcrumb" aria-hidden="true">
+      <li><a tabindex=-1 href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
     <!-- End nav -->
@@ -33,11 +34,11 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" aria-label="Map"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
+    <section id="restaurant-container" tabindex="0">
       <h1 id="restaurant-name"></h1>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>

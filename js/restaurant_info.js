@@ -82,22 +82,23 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
-  name.tabIndex = '2';
+  name.tabIndex = '0';
   name.setAttribute('aria-label', 'Restaurant name' + restaurant.name);
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
-  address.tabIndex = '5';
+  address.tabIndex = '0';
   address.setAttribute('aria-label', 'Address' + address.innerText);
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.tabIndex = '3';
+  image.setAttribute('alt', 'Photo of ' + restaurant.name);
+  image.tabIndex = '0';
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
-  cuisine.tabIndex = '4';
+  cuisine.tabIndex = '0';
   cuisine.setAttribute('aria-label', 'Cuisine type' + cuisine.innerText);
 
   // fill operating hours
@@ -106,7 +107,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
   // fill reviews
   fillReviewsHTML();
-  name.tabIndex = '2';
+  name.tabIndex = '0';
 }
 
 /**
@@ -127,7 +128,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
     hours.appendChild(row);
   }
-  hours.tabIndex = '6';
+  hours.tabIndex = '0';
   hours.setAttribute('aria-label', 'Hours' + hours.innerText);
 }
 
@@ -144,7 +145,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
     container.appendChild(noReviews);
-    container.tabIndex = '7';
+    container.tabIndex = '0';
     return;
   }
   const ul = document.getElementById('reviews-list');
@@ -152,7 +153,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     ul.appendChild(createReviewHTML(review));
   });
   container.appendChild(ul);
-  container.tabIndex = '7';
+  container.tabIndex = '0';
 }
 
 /**
