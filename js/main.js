@@ -1,57 +1,65 @@
 let restaurants,
-  neighborhoods,
-  cuisines
-var newMap
-var markers = []
+	neighborhoods,
+	cuisines;
+var newMap;
+var markers = [];
+
+if (navigator.serviceWorker) {
+	navigator.serviceWorker
+		.register('js/sw.js')
+		.catch(function(err) {
+			console.error(err);
+		});
+}
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
-  fetchNeighborhoods();
-  fetchCuisines();
+	initMap(); // added 
+	fetchNeighborhoods();
+	fetchCuisines();
 });
 
 /**
  * Fetch all neighborhoods and set their HTML.
  */
 fetchNeighborhoods = () => {
-  DBHelper.fetchNeighborhoods((error, neighborhoods) => {
-    if (error) { // Got an error
-      console.error(error);
-    } else {
-      self.neighborhoods = neighborhoods;
-      fillNeighborhoodsHTML();
-    }
-  });
+	DBHelper.fetchNeighborhoods((error, neighborhoods) => {
+		if (error) { // Got an error
+			console.error(error);
+		} else {
+			self.neighborhoods = neighborhoods;
+	   		fillNeighborhoodsHTML();
+		}
+	});
 }
 
 /**
  * Set neighborhoods HTML.
  */
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
-  const select = document.getElementById('neighborhoods-select');
-  neighborhoods.forEach(neighborhood => {
-    const option = document.createElement('option');
-    option.innerHTML = neighborhood;
-    option.value = neighborhood;
-    select.append(option);
-  });
+	const select = document.getElementById('neighborhoods-select');
+	neighborhoods.forEach(neighborhood => {
+		const option = document.createElement('option');
+		option.innerHTML = neighborhood;
+		option.value = neighborhood;
+		select.append(option);
+	});
 }
 
 /**
  * Fetch all cuisines and set their HTML.
  */
 fetchCuisines = () => {
-  DBHelper.fetchCuisines((error, cuisines) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.cuisines = cuisines;
-      fillCuisinesHTML();
-    }
-  });
+	DBHelper.fetchCuisines((error, cuisines) => {
+		if (error) { // Got an error!
+			console.error(error);
+		} else {
+			self.cuisines = cuisines;
+			fillCuisinesHTML();
+		}
+	});
 }
 
 /**
