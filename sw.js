@@ -1,4 +1,4 @@
-const firstCacheName = 'restapp-v1';
+const firstCacheName = 'restapp-v2';
 
 const cachedFiles = [
 	'/',
@@ -27,8 +27,6 @@ self.addEventListener('install', event => {
 			.then(cache => cache.addAll(cachedFiles))
 	);
 });
-
-//asas
 
 self.addEventListener('activate', event => {
 	event.waitUntil(
