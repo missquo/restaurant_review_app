@@ -4,10 +4,11 @@ let restaurants,
 var newMap;
 var markers = [];
 
+// Register service worker
 if (navigator.serviceWorker) {
 	navigator.serviceWorker
-		.register('js/sw.js')
-		.catch(function(err) {
+		.register('../sw.js')
+		.catch(err => {
 			console.error(err);
 		});
 }
